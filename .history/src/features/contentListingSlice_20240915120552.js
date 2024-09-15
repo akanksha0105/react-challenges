@@ -40,7 +40,7 @@ const contentListingSlice = createSlice({
       let filteredData = []
       if (data.length > 0) {
         if (searchTerm.length > 0) {
-          filteredData = [...state.data].filter((item) =>
+          filteredData = filteredList.filter((item) =>
             item?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()),
           )
         } else {

@@ -60,7 +60,7 @@ const contentListingSlice = createSlice({
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         if (action?.payload?.data?.length) {
-          console.log('action.payload', action.payload)
+          console.log("action.payload", action.payload)
           state.data = [...state.data, ...action.payload.data]
           state.isLoading = false
           state.currentPage = action.payload.page

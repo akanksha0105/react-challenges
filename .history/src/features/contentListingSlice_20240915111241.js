@@ -13,7 +13,10 @@ export const fetchData = createAsyncThunk(
       console.log('here', data, title, page)
       return { data, page, title }
     } catch (error) {
-      return { data: [] }
+      return {
+        message: error,
+        data: [],
+      }
     }
   },
 )
@@ -60,7 +63,6 @@ const contentListingSlice = createSlice({
       })
       .addCase(fetchData.fulfilled, (state, action) => {
         if (action?.payload?.data?.length) {
-          console.log('action.payload', action.payload)
           state.data = [...state.data, ...action.payload.data]
           state.isLoading = false
           state.currentPage = action.payload.page

@@ -3,7 +3,7 @@ import { client } from '../axios/axios'
 
 export const fetchData = createAsyncThunk(
   'contentListing/fetchData',
-  async (page, { rejectWithValue }) => {
+  async (page) => {
     try {
       const response = await client.get(`/data/page${page}.json`)
 
@@ -64,7 +64,6 @@ const contentListingSlice = createSlice({
           state.currentPage = action.payload.page
           state.title = action.payload.title
           state.hasMore = action.payload.data.length > 0 // Set hasMore based on data length
-          contentListingSlice.caseReducers.filterContentListing(state)
         } else {
           state.hasMore = false // No more data to load
         }

@@ -3,7 +3,7 @@ import { client } from '../axios/axios'
 
 export const fetchData = createAsyncThunk(
   'contentListing/fetchData',
-  async (page, { rejectWithValue }) => {
+  async (page) => {
     try {
       const response = await client.get(`/data/page${page}.json`)
 
@@ -13,7 +13,7 @@ export const fetchData = createAsyncThunk(
       console.log('here', data, title, page)
       return { data, page, title }
     } catch (error) {
-      return rejectWithValue('Error fetching data')
+      return rejectWithValue('Error fetching data');
     }
   },
 )
@@ -59,21 +59,21 @@ const contentListingSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchData.fulfilled, (state, action) => {
-        if (action.payload?.data?.length) {
+        if (action?.payload?.data?.length) {
+          console.log('action.payload', action.payload)
           state.data = [...state.data, ...action.payload.data]
+          state.isLoading = false
           state.currentPage = action.payload.page
           state.title = action.payload.title
-          state.hasMore = action.payload.data.length > 0 // Set hasMore based on data length
+          state.hasMore = action.payload.data.length > 0
           contentListingSlice.caseReducers.filterContentListing(state)
         } else {
-          state.hasMore = false // No more data to load
+          state.isLoading = false
         }
-        state.isLoading = false
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
-        state.hasMore = false // Stop further fetching on error
       })
   },
 })

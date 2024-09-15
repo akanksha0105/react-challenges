@@ -8,7 +8,7 @@ const GridItem = ({ displayImage, title }) => {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-
+        console.log("")
         const displayImageUrl = await getImageUrl(displayImage)
         setDisplayImageUrl(displayImageUrl)
       } catch (err) {

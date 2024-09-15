@@ -1,9 +1,9 @@
-import { baseURL, client } from "../axios/axios"
-export const missingImageString = 'images/placeholder_for_missing_posters.png'
+import { client } from "../axios/axios"
+export const missingImageString = 'placeholder_for_missing_posters.png'
 export const getImageUrl = async (imageString) => {
   // Handle the case where the image is missing
   if (imageString === "posterthatismissing.jpg") {
-    return `${baseURL}/${missingImageString}`;
+    return `${client.defaults.baseURL}/${missingImageString}`;
   }
 
   try {

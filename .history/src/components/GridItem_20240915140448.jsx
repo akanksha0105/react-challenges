@@ -8,12 +8,11 @@ const GridItem = ({ displayImage, title }) => {
   useEffect(() => {
     const fetchImage = async () => {
       try {
-
         const displayImageUrl = await getImageUrl(displayImage)
         setDisplayImageUrl(displayImageUrl)
       } catch (err) {
         setError('Failed to load image')
-       
+        
         console.error(err)
       }
     }

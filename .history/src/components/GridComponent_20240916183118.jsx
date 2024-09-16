@@ -49,7 +49,7 @@ const GridComponent = () => {
           />
         ))
       ) : (
-        <p>No results found.</p> 
+        <p>No results found.</p> // Optional: Handle empty state
       )}
     </div>
   );

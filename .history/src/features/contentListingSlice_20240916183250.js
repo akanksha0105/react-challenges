@@ -63,17 +63,17 @@ const contentListingSlice = createSlice({
           state.data = [...state.data, ...action.payload.data]
           state.currentPage = action.payload.page
           state.title = action.payload.title
-          state.hasMore = action.payload.data.length > 0 
+          state.hasMore = action.payload.data.length > 0 // Set hasMore based on data length
           contentListingSlice.caseReducers.filterContentListing(state)
         } else {
-          state.hasMore = false 
+          state.hasMore = false // No more data to load
         }
         state.isLoading = false
       })
       .addCase(fetchData.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.payload
-        state.hasMore = false 
+        state.hasMore = false // Stop further fetching on error
       })
   },
 })

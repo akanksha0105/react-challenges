@@ -18,7 +18,7 @@ const GridComponent = () => {
     }
   }, [data.length, isLoading, dispatch]);
 
-  
+  // Scroll handler
   const handleScroll = useCallback(
     debounce(() => {
       const scrollTop = window.scrollY;
@@ -28,11 +28,11 @@ const GridComponent = () => {
       if (bottom && !isLoading && hasMore) {
         dispatch(fetchData(currentPage + 1));
       }
-    }, 200), 
+    }, 200), // Debounce wait time (200ms)
     [dispatch, isLoading, hasMore, currentPage]
   );
 
-
+  // Add and remove scroll event listener
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -43,13 +43,13 @@ const GridComponent = () => {
       {filteredList.length > 0 ? (
         filteredList.map((dataItem) => (
           <GridItem
-            key={dataItem.id} 
+            key={dataItem.id} // Use a unique identifier from your data
             title={dataItem.name}
             displayImage={dataItem['poster-image']}
           />
         ))
       ) : (
-        <p>No results found.</p> 
+        <p>No results found.</p> // Optional: Handle empty state
       )}
     </div>
   );

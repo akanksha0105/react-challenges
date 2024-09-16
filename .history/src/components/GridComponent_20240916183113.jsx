@@ -43,13 +43,13 @@ const GridComponent = () => {
       {filteredList.length > 0 ? (
         filteredList.map((dataItem) => (
           <GridItem
-            key={dataItem.id} 
+            key={dataItem.id} // Use a unique identifier from your data
             title={dataItem.name}
             displayImage={dataItem['poster-image']}
           />
         ))
       ) : (
-        <p>No results found.</p> 
+        <p>No results found.</p> // Optional: Handle empty state
       )}
     </div>
   );

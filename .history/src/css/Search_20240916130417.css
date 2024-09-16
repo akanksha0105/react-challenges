@@ -1,0 +1,62 @@
+
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 0.625em; /* 10px converted to em */
+    transition: opacity 0.3s ease;
+    width: 100%; /* Ensure container takes full width */
+    padding-right: 2.5em; /* Reserve space for the close icon (40px converted to em) */
+}
+
+.searchInput {
+    padding: 0.5em; /* Padding around input */
+    font-size: 1em; /* Font size for input */
+    border: 0.0625em solid #ccc; /* Border width (1px converted to em) */
+    border-radius: 0.25em; /* Border radius (4px converted to em) */
+    flex-grow: 1; /* Allow input to take available space */
+}
+
+.iconButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.iconButton img {
+    width: 1.5em; /* Width of search icon (24px converted to em) */
+    height: 1.5em; /* Height of search icon (24px converted to em) */
+}
+
+/* Ensure space for the close icon */
+.searchInputContainer {
+    padding-right: 2.5em; /* Space reserved for close icon */
+}
+
+.iconButton .MuiSvgIcon-root {
+    font-size: 1.5em; /* Font size of the close icon (24px converted to em) */
+    color: var(--primary-color);
+}
+
+
+@media (max-width: 768px) {
+    .searchContainer.expanded{
+        
+    }
+}
+
+@media (max-width: 480px) {
+
+}

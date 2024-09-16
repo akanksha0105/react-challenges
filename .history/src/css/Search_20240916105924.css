@@ -1,0 +1,41 @@
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    transition: opacity 0.3s ease;
+    width: 100%; /* Ensure container takes full width */
+}
+
+.searchInput {
+    padding: 0.5em;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow: 1; /* Allow input to take available space */
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Reserve space for the close icon */
+.searchInputContainer {
+    padding-right: 40px; /* Ensure there's space for the close icon */
+}

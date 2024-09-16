@@ -1,0 +1,47 @@
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 0.625em; 
+    transition: opacity 0.3s ease;
+    width: 100%; 
+    padding-right: 2.5em;
+}
+
+.searchInput {
+    padding: 0.5em; 
+    font-size: 1em;
+    border: 0.0625em solid #ccc; 
+    border-radius: 0.25em; 
+    flex-grow: 1; 
+}
+
+.icon-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button img {
+    width: 1.5em; 
+    height: 1.5em;
+}
+
+/* Ensure space for the close icon */
+.searchInputContainer {
+    padding-right: 2.5em; 
+}
+
+.icon-button .MuiSvgIcon-root {
+    font-size: 1.5em; 
+    color: white; /* Icon color */
+}

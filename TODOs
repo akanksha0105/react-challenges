@@ -1,0 +1,14 @@
+TODO : 
+Write Unit tests
+Remove console.log
+Remove comments
+add performance parameters
+add animations
+make code cleaner
+order of files
+title edgecase
+desktop grid - priorty
+check for code splitting
+add error boundary
+see if we can use useMemo, React.lazy
+remove warnings and errors

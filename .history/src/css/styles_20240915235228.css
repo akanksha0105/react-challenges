@@ -1,0 +1,229 @@
+.navBar {
+  width: 100%;
+  height: 2em;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  gap: 1.25em;
+  align-items: center;
+  padding: 1em 1.25em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navBar .searchContainer {
+  margin-left: auto;
+}
+
+.iconContainer {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.iconContainer>img {
+  width: 1.25em;
+  height: 1.25em;
+  cursor: pointer;
+}
+
+.contentPageTitle {
+  font-size: 1.5em;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+
+}
+
+.content {
+  margin-top: 3em;
+
+  display: flex;
+
+  flex-direction: column;
+  /* padding: 15px; */
+  overflow: auto;
+  /* Allows scrolling if content overflows */
+}
+
+.content-grid-container {
+  flex: 1;
+  /* Allow the grid to expand and fill the remaining space */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Create a grid with 3 columns */
+
+  padding: 1em 0.75em;
+  gap: 16px;
+  /* Spacing between grid items */
+  grid-auto-rows: minmax(4em, auto);
+  /* Automatically adjust row height */
+  overflow: auto;
+  /* Allows scrolling if the grid items overflow */
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  color: var(--primary-color);
+  caret-color: var(--primary-color);
+}
+
+.searchInput:focus {
+  outline: none;
+  /* Ensures no outline on focus */
+  box-shadow: none;
+  caret-color: var(--primary-color);
+  /* Ensures no shadow on focus */
+}
+
+@media (max-width: 600px) {
+  .content-grid-container {
+    flex: 1;
+    /* Allow the grid to expand and fill the remaining space */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Maintain exactly 3 columns */
+    padding: 1em 0.75em;
+    gap: 16px;
+    /* Spacing between grid items */
+    grid-auto-rows: minmax(4em, auto);
+    /* Automatically adjust row height */
+    overflow: auto;
+    /* Allows scrolling if the grid items overflow */
+  }
+
+  .content-grid-container>div {
+    /* Optionally adjust item size or padding here */
+    /* For example, you might want to set a max-width to avoid items becoming too large */
+    max-width: 100%;
+    /* Ensure items don't exceed container width */
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: row;
+    border: var(--primary-color);
+  }
+
+  .searchInput {
+    border: none;
+    /* Removes the border */
+    background: transparent;
+    /* Makes the background transparent */
+    outline: none;
+    /* Removes the default outline on focus */
+    box-shadow: none;
+    color: var(--primary-color);
+    caret-color: var(--primary-color);
+  }
+
+  .searchInput:focus {
+    outline: none;
+    /* Ensures no outline on focus */
+    box-shadow: none;
+    caret-color: var(--primary-color);
+    /* Ensures no shadow on focus */
+  }
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1em;
+  padding: 1em;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5em;
+  box-shadow: 0em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+  /* border-radius: 0.5em; */
+  overflow: hidden;
+  /* background-color: #fff; */
+}
+
+.imageWrapper {
+  position: relative;
+  padding-top: 150%;
+  /* 2:3 aspect ratio */
+  overflow: hidden;
+  /* border-radius: 0.5em; */
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--primary-color);
+  overflow: hidden;
+  /* Enable horizontal scrolling */
+  white-space: nowrap;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+    /* Always 3 columns on mobile */
+    gap: 0.75em;
+    padding: 0.75em;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+    /* Ensure 3 columns on smaller screens */
+    gap: 0.5em;
+    padding: 0.5em;
+  }
+
+  .navBar{
+    padding: ;
+  }
+  .iconContainer {
+    width: 1em;
+    height: 1em;
+  }
+
+  .iconContainer>img {
+    width: 1em;
+    height: 1em;
+
+  }
+
+  .contentPageTitle {
+    font-size: 1.25em;
+    font-weight: 200;
+    letter-spacing: 0;
+
+  }
+}

@@ -10,7 +10,7 @@ export const fetchData = createAsyncThunk(
       const data = response.data?.page?.['content-items']?.content || []
 
       const title = response.data?.page?.title
-      console.log('here', data, title, page)
+
       return { data, page, title }
     } catch (error) {
       return rejectWithValue('Error fetching data')

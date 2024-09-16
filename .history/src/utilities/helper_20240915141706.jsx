@@ -4,7 +4,7 @@ export const getImageUrl = async (imageString) => {
 
   // if(imageString === 'posterthatismissing.jpg')
     const response = await client.get(`images/${imageString}`)
-    console.log(" getImageUrl", )
+  
     const {baseURL, url} = response?.config
     const imageURL = `${baseURL}/${url}`;
    

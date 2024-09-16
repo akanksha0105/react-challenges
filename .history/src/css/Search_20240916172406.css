@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  padding-left: 0.5em;
 }
 
 .searchContainer.expanded {
@@ -14,12 +13,12 @@
   display: flex;
   align-items: center;
   margin-left: 0.625em;
-  /* 10px converted to em */
+
   transition: opacity 0.3s ease;
   width: 100%;
-  /* Ensure container takes full width */
-  padding-right: 2.5em;
-
+  
+ 
+  padding-left: ;
   /* Reserve space for the close icon (40px converted to em) */
 }
 

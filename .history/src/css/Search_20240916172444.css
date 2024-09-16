@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
-  padding-left: 0.5em;
 }
 
 .searchContainer.expanded {

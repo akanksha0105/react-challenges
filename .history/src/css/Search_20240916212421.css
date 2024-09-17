@@ -1,0 +1,54 @@
+.searchContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    transition: border 0.3s ease, padding 0.3s ease;
+  }
+  
+  .searchContainer.expanded {
+    border: 1px solid var(--text-color);
+  }
+  
+  .searchInputContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 0.625em; /* 10px converted to em */
+    width: 100%;
+    padding-right: 2.5em; /* Reserve space for the close icon */
+    transition: opacity 0.3s ease;
+  }
+  
+  .searchInput {
+    padding: 0.5em;
+    font-size: 1em;
+    border-radius: 0.25em;
+    flex-grow: 1; /* Allow input to take available space */
+  }
+  
+  .iconButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5em;
+    height: 1.5em;
+  }
+  
+  .iconButton img, 
+  .iconButton .MuiSvgIcon-root {
+    width: 1.5em;
+    height: 1.5em;
+    color: var(--text-color);
+  }
+  
+@media (min-width: 481px) and (max-width: 768px) {
+    /* Add your styles for tablets here */
+  }
+  
+  @media (max-width: 480px) {
+    /* Add your styles for mobile here */
+  }
+  

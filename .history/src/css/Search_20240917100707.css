@@ -1,0 +1,69 @@
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding-left: 0.5em;
+}
+
+.searchContainer.expanded {
+  border: 1px solid var(--text-color);
+}
+
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  margin-left: 0.625em;
+  transition: opacity 0.3s ease;
+  width: 100%;
+  padding-right: 2.5em;
+}
+
+.searchInput {
+  padding: 0.5em;
+  /* Padding around input */
+  font-size: 1em;
+  /* Font size for input */
+
+  border-radius: 0.25em;
+  /* Border radius (4px converted to em) */
+  flex-grow: 1;
+  /* Allow input to take available space */
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.iconButton img {
+  width: 1.5em;
+  /* Width of search icon (24px converted to em) */
+  height: 1.5em;
+  /* Height of search icon (24px converted to em) */
+}
+
+/* Ensure space for the close icon */
+.searchInputContainer {
+  padding-right: 0.5em;
+  /* Space reserved for close icon */
+}
+
+.iconButton .MuiSvgIcon-root {
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    
+}
+
+@media (max-width: 480px) {
+ 
+}

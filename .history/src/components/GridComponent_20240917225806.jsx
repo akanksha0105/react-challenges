@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import '../css/Grid.css'
 import GridItem from './GridItem'
 import ShimmerGridItem from "./ShimmerGridItem"
-// import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { fetchData } from '../features/contentListingSlice'
 import { debounce } from '../utilities/helper'
 
@@ -47,7 +47,7 @@ const GridComponent = () => {
       ) : filteredList.length > 0 ? (
         filteredList.map((dataItem) => (
           <GridItem
-            key={dataItem.id}
+            key={}
             title={dataItem.name}
             displayImage={dataItem['poster-image']}
           />

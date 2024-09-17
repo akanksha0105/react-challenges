@@ -23,21 +23,21 @@ const GridComponent = () => {
     }
   }, [data.length])
 
-  // Handle scroll event
+ 
   const handleScroll = useCallback(
     debounce(() => {
       const scrollTop = window.scrollY
       const bottom =
         window.innerHeight + scrollTop >= document.documentElement.scrollHeight
 
-      // Fetch data when scrolling to the bottom if there's more data to load
+     
       if (bottom && !isLoading && hasMore && !requestSent) {
         setRequestSent(true)
         dispatch(fetchData(currentPage + 1))
           .then(() => setRequestSent(false))
           .catch(() => setRequestSent(false))
       }
-    }, 200), // Debounce wait time (200ms)
+    }, 200), 
     [isLoading, hasMore, currentPage, requestSent],
   )
 
@@ -48,7 +48,9 @@ const GridComponent = () => {
 
   return (
     <div className="content-grid-container">
-      {filteredList.length > 0 ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : filteredList.length > 0 ? (
         filteredList.map((dataItem) => (
           <GridItem
             key={uuidv4()}
@@ -57,10 +59,12 @@ const GridComponent = () => {
           />
         ))
       ) : (
-        <p>No results found.</p> // Optional: Handle empty state
+       
+        <p>No results found.</p>
       )}
     </div>
   )
+  
 }
 
 export default GridComponent

@@ -2,12 +2,18 @@ import React, { useCallback, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../css/Grid.css'
 import GridItem from './GridItem'
-import ShimmerGridItem from "./ShimmerGridItem"
-// import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import { fetchData } from '../features/contentListingSlice'
 import { debounce } from '../utilities/helper'
 
-
+const ShimmerGridItem = () => {
+  return (
+    <div className="gridItem">
+      <div className="shimmerWrapper" /> {/* Image shimmer */}
+      <div className="shimmerText" /> {/* Title shimmer */}
+    </div>
+  )
+}
 const GridComponent = () => {
   const dispatch = useDispatch()
   const { data, isLoading, hasMore, currentPage, filteredList } = useSelector(
@@ -47,7 +53,7 @@ const GridComponent = () => {
       ) : filteredList.length > 0 ? (
         filteredList.map((dataItem) => (
           <GridItem
-            key={dataItem.id}
+            key={uuidv4()}
             title={dataItem.name}
             displayImage={dataItem['poster-image']}
           />

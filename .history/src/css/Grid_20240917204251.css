@@ -1,0 +1,11 @@
+.contentGridContainer{
+    display: grid;
+    grid-auto-rows: minmax(4em, auto);
+    overflow: auto;
+    flex: 1;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1em 0.75em;
+    gap: 16px;
+    
+  }
+  

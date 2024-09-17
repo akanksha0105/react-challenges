@@ -1,0 +1,54 @@
+
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.iconContainer>img {
+  width: 1.25em;
+  height: 1.25em;
+  cursor: pointer;
+}
+
+
+
+
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+ 
+
+ 
+
+
+}
+
+
+@media (max-width: 480px) {
+  .navBar {
+    padding: 0.5em 0.75em;
+  }
+
+  .iconContainer {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .iconContainer>img {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .contentPageTitle {
+    font-size: 1em;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+  }
+
+
+}
+
+

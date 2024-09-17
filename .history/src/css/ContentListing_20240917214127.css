@@ -1,0 +1,11 @@
+.contentListing{
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }

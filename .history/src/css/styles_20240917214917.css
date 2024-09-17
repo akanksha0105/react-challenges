@@ -1,0 +1,43 @@
+
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.iconContainer>img {
+  width: 1.25em;
+  height: 1.25em;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+ 
+  .iconContainer {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .iconContainer>img {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .contentPageTitle {
+    font-size: 1em;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+  }
+
+
+}
+
+

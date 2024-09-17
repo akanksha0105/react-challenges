@@ -1,0 +1,106 @@
+
+.content {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  color: var(--text-color);
+  caret-color: var(--text-color);
+}
+
+.searchInput:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .contentGridContainer {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1em 0.75em;
+    gap: 16px;
+  }
+
+  .searchContainer {
+    display: flex;
+    flex-direction: row;
+    border: var(--primary-color);
+  }
+
+
+}
+
+@media (min-width: 481px) and (max-width: 600px) { 
+  .searchContainer {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 480px) {
+  .navBar {
+    padding: 0.5em 0.75em;
+  }
+
+  .iconContainer {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .iconContainer>img {
+    width: 0.75em;
+    height: 0.75em;
+  }
+
+  .contentPageTitle {
+    font-size: 1em;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+  }
+
+
+}
+
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5em;
+  box-shadow: 0em 0.125em 0.25em rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  padding-top: 150%;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  margin-top: 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--text-color);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+

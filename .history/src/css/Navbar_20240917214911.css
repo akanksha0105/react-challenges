@@ -1,0 +1,33 @@
+
+.navBar {
+ 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    gap: 1.25em;
+    align-items: center;
+    padding: 1em 1.25em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .navBar .searchContainer {
+    margin-left: auto;
+  }
+
+  /* Content Styles */
+.contentPageTitle {
+    font-size: 1.5em;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+  }
+
+
+@media (max-width: 480px) {
+    .navBar {
+      padding: 0.5em 0.75em;
+    }
+}

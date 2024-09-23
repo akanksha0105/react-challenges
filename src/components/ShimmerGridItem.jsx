@@ -1,7 +1,9 @@
+import { placeholderImage } from "../utilities/helper";
+
 const ShimmerGridItem = () => {
   return (
     <div className="gridItem">
-      <img src={""} alt="poster-image" loading="lazy" />
+      <img src={placeholderImage} alt="poster-image" loading="lazy" />
     </div>
   );
 };

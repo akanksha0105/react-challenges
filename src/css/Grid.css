@@ -17,7 +17,12 @@
   overflow: hidden;
 }
 
-
+.gridItem>img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
 
 .shimmerWrapper {
   width: 100%;
@@ -56,11 +61,11 @@
   }
 }
 
-.imageWrapper {
+/* .imageWrapper {
   position: relative;
   padding-top: 150%;
   overflow: hidden;
-}
+} */
 
 .imageWrapper img {
   position: absolute;

@@ -1,5 +1,5 @@
-import { baseURL, client } from "../axios/axios"
-export const missingImageString = 'images/placeholder_for_missing_posters.png'
+import { baseURL, client } from "../axios/axios";
+export const missingImageString = 'images/placeholder_for_missing_posters.png';
 export const getImageUrl = async (imageString) => {
 
   if (imageString === "posterthatismissing.jpg") {
@@ -17,15 +17,15 @@ export const getImageUrl = async (imageString) => {
   }
 };
 
-
+export const placeholderImage = `${process.env.REACT_APP_API_URL}/images/placeholder_for_missing_posters.png`;
 
 export const debounce = (func, wait) => {
-  let timeout
+  let timeout;
   return (...args) => {
-    clearTimeout(timeout)
-    timeout = setTimeout(() => func.apply(this, args), wait)
-  }
-}
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+};
 
 export const getTruncatedTitle = (title) => {
   let maxLength = 12;

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { client } from '../axios/axios'
+import { v4 as uuidv4 } from 'uuid'; 
 
 export const fetchData = createAsyncThunk(
   'contentListing/fetchData',
@@ -7,7 +8,11 @@ export const fetchData = createAsyncThunk(
     try {
       const response = await client.get(`/data/page${page}.json`)
 
-      const data = response.data?.page?.['content-items']?.content || []
+      const data = response.data?.page?.['content-items']?.content.map(item => ({
+        id: uuidv4(),
+        name: item.name,
+        posterUrl: `${process.env.REACT_APP_API_URL}/images/${item['poster-image']}`,
+      }));
 
       const title = response.data?.page?.title
       return { data, page, title }
@@ -32,6 +37,7 @@ const contentListingSlice = createSlice({
   reducers: {
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload
+      state.currentPage = 1;
       contentListingSlice.caseReducers.filterContentListing(state)
     },
     filterContentListing: (state) => {

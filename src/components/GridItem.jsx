@@ -1,55 +1,43 @@
-import React, { useState, useEffect, useRef } from 'react'
-import Tooltip from '@mui/material/Tooltip'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import '../css/Grid.css'
-import { getImageUrl } from '../utilities/helper'
+import React, { useState, useEffect, useRef } from 'react';
+import Tooltip from '@mui/material/Tooltip';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import '../css/Grid.css';
+import { placeholderImage } from '../utilities/helper';
 
-const GridItem = ({ displayImage, title }) => {
-  const [displayImageUrl, setDisplayImageUrl] = useState('')
-  const [error, setError] = useState(null)
-  const [isOverflowing, setIsOverflowing] = useState(false)
-  const [tooltipOpen, setTooltipOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true) // Added loading state
-  const titleRef = useRef(null)
-  const tooltipRef = useRef(null)
-  const isMobile = useMediaQuery('(max-width: 768px)')
+const GridItem = ({ posterUrl, name }) => {
 
-  useEffect(() => {
-    const fetchImage = async () => {
-      try {
-        const imageUrl = await getImageUrl(displayImage)
-        setDisplayImageUrl(imageUrl)
-        setIsLoading(false) // Stop loading once image is fetched
-      } catch (err) {
-        setError('Failed to load image')
-        console.error(err)
-        setIsLoading(false) // Stop loading on error
-      }
-    }
-
-    fetchImage()
-  }, [displayImage])
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const [tooltipOpen, setTooltipOpen] = useState(false);
+  const titleRef = useRef(null);
+  const tooltipRef = useRef(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     const checkOverflow = () => {
       if (titleRef.current) {
         setIsOverflowing(
           titleRef.current.scrollWidth > titleRef.current.clientWidth,
-        )
+        );
       }
-    }
+    };
 
-    checkOverflow()
+    checkOverflow();
 
-    window.addEventListener('resize', checkOverflow)
-    return () => window.removeEventListener('resize', checkOverflow)
-  }, [title])
+    window.addEventListener('resize', checkOverflow);
+    return () => window.removeEventListener('resize', checkOverflow);
+  }, [name]);
 
   const handleTooltipClick = () => {
     if (isMobile && isOverflowing) {
-      setTooltipOpen((prev) => !prev)
+      setTooltipOpen((prev) => !prev);
     }
-  }
+  };
+
+  const handleError = (event) => {
+    event.target.src = placeholderImage; // Set placeholder image on error
+  };
+
+
 
   const handleClickOutside = (event) => {
     if (
@@ -58,31 +46,22 @@ const GridItem = ({ displayImage, title }) => {
       titleRef.current &&
       !titleRef.current.contains(event.target)
     ) {
-      setTooltipOpen(false)
+      setTooltipOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (isMobile) {
-      document.addEventListener('mousedown', handleClickOutside)
-      return () => document.removeEventListener('mousedown', handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
     }
-  }, [isMobile])
+  }, [isMobile]);
 
   return (
     <div className="gridItem">
-      <div className="imageWrapper">
-        {isLoading ? (
-          <div className="shimmer" /> // Shimmer effect while loading
-        ) : error ? (
-          <div className="error">Error loading image</div>
-        ) : (
-          <img src={displayImageUrl} alt="poster-image" loading="lazy" />
-        )}
-      </div>
-
+      <img src={posterUrl} alt="poster-image" loading="lazy" onError={handleError} />
       <Tooltip
-        title={title}
+        title={name}
         enterTouchDelay={0}
         leaveTouchDelay={2000}
         disableFocusListener={isMobile}
@@ -96,11 +75,11 @@ const GridItem = ({ displayImage, title }) => {
         ref={tooltipRef}
       >
         <span ref={titleRef} className="title" onClick={handleTooltipClick}>
-          {title}
+          {name}
         </span>
       </Tooltip>
     </div>
-  )
-}
+  );
+};
 
-export default GridItem
+export default GridItem;

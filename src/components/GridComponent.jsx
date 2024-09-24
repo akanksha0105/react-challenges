@@ -46,7 +46,7 @@ const GridComponent = () => {
         filteredList.length > 0 ? (
           filteredList.map((dataItem, index) => {
             const isLastItem = index === filteredList.length - 1;
-            console.log("isLastItem", isLastItem);
+
             return (
               <GridItem
                 ref={isLastItem ? lastBookElementRef : null}

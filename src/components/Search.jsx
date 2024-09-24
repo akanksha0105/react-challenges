@@ -4,11 +4,14 @@ import '../css/Search.css';
 import { setSearchTerm } from '../features/contentListingSlice';
 import CloseIcon from '@mui/icons-material/Close';
 
-
-const Search = ({ searchIcon, searchContainerExpanded, setSearchContainerExpanded }) => {
+const Search = ({
+  searchIcon,
+  searchContainerExpanded,
+  setSearchContainerExpanded,
+}) => {
   const dispatch = useDispatch();
   const { searchTerm } = useSelector((state) => state.contentListing);
-  // const [isExpanded, setIsExpanded] = useState(false);
+
   const inputRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -25,20 +28,6 @@ const Search = ({ searchIcon, searchContainerExpanded, setSearchContainerExpande
   const handleInputChange = (event) => {
     dispatch(setSearchTerm(event.target.value));
   };
-
-  // const handleClickOutside = useCallback((event) => {
-  //   if (containerRef.current && !containerRef.current.contains(event.target)) {
-  //     setSearchContainerExpanded(false);
-  //   }
-  // }, []);
-
-
-  // useEffect(() => {
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, [handleClickOutside]);
 
   return (
     <div

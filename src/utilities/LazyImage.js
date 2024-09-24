@@ -1,4 +1,4 @@
-// LazyImage.js
+
 import React, { useEffect, useRef, useState } from 'react';
 import { placeholderImage } from './helper';
 
@@ -21,7 +21,7 @@ useEffect(() => {
       });
     });
 
-    // Immediately check if the image is in the viewport
+
     if (imgRef.current) {
       const rect = imgRef.current.getBoundingClientRect();
       const isInViewport = (

@@ -1,58 +1,39 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import "../css/Navbar.css"
-import Search from './Search'
-import { getImageUrl } from '../utilities/helper'
-
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import '../css/Navbar.css';
+import Search from './Search';
+import { getImageUrl } from '../utilities/helper';
+import { backIcon, navBarBackground, searchIcon } from '../utilities/icons';
+import { setSearchTerm } from '../features/contentListingSlice';
 
 const Navbar = () => {
-  const { title } = useSelector((state) => state.contentListing)
+  const dispatch = useDispatch();
+  const { title } = useSelector((state) => state.contentListing);
+  const [searchContainerExpanded, setSearchContainerExpanded] = useState(false);
 
-  const [bgImage, setBgImage] = useState('')
-  const [backIcon, setBackIcon] = useState('')
-  const [searchIcon, setSearchIcon] = useState('')
-  const [error, setError] = useState(null)
 
-  useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const bgImageUrl = await getImageUrl('nav_bar.png')
-        setBgImage(bgImageUrl)
-
-        const backIconUrl = await getImageUrl('Back.png')
-        setBackIcon(backIconUrl)
-
-        const searchIconUrl = await getImageUrl('search.png')
-        setSearchIcon(searchIconUrl)
-      } catch (err) {
-        setError('Failed to load images')
-        console.error(err)
-      }
-    }
-
-    fetchImages()
-  }, [])
-
-  if (error) {
-    return <div>Error: {error}</div>
-  }
+  const handleBackButtonClick = () => {
+    dispatch(setSearchTerm(""));
+    setSearchContainerExpanded(false);
+  };
 
   return (
     <div
       className="navBar"
       style={{
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: `url(${getImageUrl(navBarBackground)})`,
       }}
     >
-      <div className="iconContainer">
-        {backIcon && <img src={backIcon} alt="Back" />}
-      </div>
+      <button className="iconButton" onClick={handleBackButtonClick}>
+        <img src={`${getImageUrl(backIcon)}`} alt="Back" loading="lazy" />
 
-      <div className="contentPageTitle">{title}</div>
+      </button>
 
-      <Search searchIcon={searchIcon} />
+      <div className={`contentPageTitle ${searchContainerExpanded ? "hide" : ""}`}>{title}</div>
+
+      <Search searchIcon={`${getImageUrl(searchIcon)}`} searchContainerExpanded={searchContainerExpanded} setSearchContainerExpanded={setSearchContainerExpanded} />
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

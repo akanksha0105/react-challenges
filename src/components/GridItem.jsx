@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, forwardRef } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import '../css/Grid.css';
-import { placeholderImage } from '../utilities/helper';
 
-const GridItem = ({ posterUrl, name }) => {
+import LazyImage from '../utilities/LazyImage';
+
+const GridItem = forwardRef(({ name, posterUrl, key }, ref) => {
 
   const [isOverflowing, setIsOverflowing] = useState(false);
   const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -33,10 +34,6 @@ const GridItem = ({ posterUrl, name }) => {
     }
   };
 
-  const handleError = (event) => {
-    event.target.src = placeholderImage; // Set placeholder image on error
-  };
-
 
 
   const handleClickOutside = (event) => {
@@ -58,8 +55,9 @@ const GridItem = ({ posterUrl, name }) => {
   }, [isMobile]);
 
   return (
-    <div className="gridItem">
-      <img src={posterUrl} alt="poster-image" loading="lazy" onError={handleError} />
+    <div key={key} ref={ref || null} className="gridItem">
+      {/* <img src={posterUrl} alt="poster-image" loading="lazy" onError={handleError} /> */}
+      <LazyImage src={posterUrl} alt="poster-image" />
       <Tooltip
         title={name}
         enterTouchDelay={0}
@@ -80,6 +78,6 @@ const GridItem = ({ posterUrl, name }) => {
       </Tooltip>
     </div>
   );
-};
+});
 
 export default GridItem;

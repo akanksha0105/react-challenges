@@ -1,68 +1,68 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../css/Grid.css';
 import GridItem from './GridItem';
-import ShimmerGridItem from './ShimmerGridItem';
 import { fetchData } from '../features/contentListingSlice';
-import { debounce } from '../utilities/helper';
+
 
 const GridComponent = () => {
   const dispatch = useDispatch();
   const { data, isLoading, hasMore, currentPage, filteredList } = useSelector(
-    (state) => state.contentListing,
+    (state) => state.contentListing
   );
 
-  // Fetch initial data
   useEffect(() => {
     if (data.length === 0 && !isLoading) {
       dispatch(fetchData(1));
     }
-  }, [data.length, isLoading, dispatch]);
+  }, [data.length, dispatch, isLoading]);
 
-  // Handle infinite scroll
-  const handleScroll = useCallback(
-    debounce(() => {
-      const scrollTop = window.scrollY;
-      const bottom =
-        window.innerHeight + scrollTop >= document.documentElement.scrollHeight;
+  const observer = useRef();
 
-      if (bottom && !isLoading && hasMore) {
-        dispatch(fetchData(currentPage + 1));
-      }
-    }, 200),
-    [isLoading, hasMore, currentPage],
-  );
+  const lastBookElementRef = useCallback(node => {
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
+    if (isLoading) return;
+    if (observer.current) observer.current.disconnect();
+
+    observer.current = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && hasMore) {
+          dispatch(fetchData(currentPage + 1));
+        }
+      });
+    });
+
+    if (node) observer.current.observe(node);
+
+    return () => {
+      if (observer.current) observer.current.disconnect();
+    };
+  }, [isLoading, hasMore, dispatch, currentPage]);
+
 
   return (
     <div className="contentGridContainer">
-      {isLoading && data.length === 0 ? (
-        // Show shimmer during the initial load when no data is available yet
-        <ShimmerGridItem />
-      ) : filteredList.length > 0 ? (
-        // Show grid items when the filtered list has data
-        filteredList.map((dataItem) => (
-          <GridItem
-            key={dataItem.id}
-            name={dataItem.name}
-            posterUrl={dataItem.posterUrl}
-          />
-        ))
-      ) : !isLoading && data.length > 0 ? (
-        // Show "No results" message when data exists but nothing matches the filter
-        <div>No results</div>
-      ) : null}
+      {data?.length > 0 ?
+        filteredList.length > 0 ? (
+          filteredList.map((dataItem, index) => {
+            const isLastItem = index === filteredList.length - 1;
+            console.log("isLastItem", isLastItem);
+            return (
+              <GridItem
+                ref={isLastItem ? lastBookElementRef : null}
+                key={dataItem.id}
+                name={dataItem.name}
+                posterUrl={dataItem.posterUrl}
+              />
+            );
+          })
+        ) : (
+          <div>No items found.</div>
+        )
+        : null}
 
-      {isLoading && filteredList.length > 0 && hasMore ? (
-        // Show shimmer during subsequent loads when more data is being fetched
-        <ShimmerGridItem />
-      ) : null}
+
     </div>
-
   );
 };
 

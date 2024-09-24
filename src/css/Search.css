@@ -8,6 +8,7 @@
 
 .searchContainer.expanded {
   border: 1px solid var(--text-color);
+  width: 100%;
 }
 
 .searchInputContainer {
@@ -39,13 +40,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .iconButton img {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.25em;
+  height: 1.25em;
 }
 
 .searchInputContainer {
@@ -53,7 +54,7 @@
 }
 
 .iconButton .MuiSvgIcon-root {
-  font-size: 1.5em;
+  font-size: 1.25em;
   color: var(--text-color);
 }
 
@@ -61,21 +62,37 @@
   outline: none;
   box-shadow: none;
 }
+ 
 
-
+/* 
 @media (max-width: 768px) {
   .searchContainer {
     display: flex;
     flex-direction: row;
     border: var(--primary-color);
   }
+
+  .iconButton {
+    width: 0.75em;
+    height: 0.75em;
+  }
+  .iconButton img {
+    width: 0.75em;
+    height: 0.75em;
+  }
 }
 
 @media (max-width: 480px) {
-  .contentPageTitle {
-    font-size: 1em;
-    font-weight: 200;
-    letter-spacing: 0.05em;
+ 
+
+  .iconButton {
+    width: 0.75em;
+    height: 0.75em;
+  }
+  .iconButton img {
+    width: 0.75em;
+    height: 0.75em;
   }
 
-}
+ 
+} */

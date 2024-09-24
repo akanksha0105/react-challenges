@@ -1,55 +1,56 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import '../css/Search.css'
-import { setSearchTerm } from '../features/contentListingSlice'
-import CloseIcon from '@mui/icons-material/Close'
+import React, { useCallback, useRef, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import '../css/Search.css';
+import { setSearchTerm } from '../features/contentListingSlice';
+import CloseIcon from '@mui/icons-material/Close';
 
 
-const Search = ({ searchIcon }) => {
-  const dispatch = useDispatch()
-  const { searchTerm } = useSelector((state) => state.contentListing)
-  const [isExpanded, setIsExpanded] = useState(false)
-  const inputRef = useRef(null)
-  const containerRef = useRef(null)
+const Search = ({ searchIcon, searchContainerExpanded, setSearchContainerExpanded }) => {
+  const dispatch = useDispatch();
+  const { searchTerm } = useSelector((state) => state.contentListing);
+  // const [isExpanded, setIsExpanded] = useState(false);
+  const inputRef = useRef(null);
+  const containerRef = useRef(null);
 
   const handleSearchClick = () => {
-    setIsExpanded(true)
-    inputRef.current?.focus()
-  }
+    setSearchContainerExpanded(true);
+    inputRef.current?.focus();
+  };
 
   const handleCloseClick = () => {
-    dispatch(setSearchTerm(''))
-    setIsExpanded(false)
-  }
+    dispatch(setSearchTerm(''));
+    setSearchContainerExpanded(false);
+  };
 
   const handleInputChange = (event) => {
-    dispatch(setSearchTerm(event.target.value))
-  }
+    dispatch(setSearchTerm(event.target.value));
+  };
 
-  const handleClickOutside = useCallback((event) => {
-    if (containerRef.current && !containerRef.current.contains(event.target)) {
-      setIsExpanded(false)
-    }
-  }, [])
+  // const handleClickOutside = useCallback((event) => {
+  //   if (containerRef.current && !containerRef.current.contains(event.target)) {
+  //     setSearchContainerExpanded(false);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [handleClickOutside])
+
+  // useEffect(() => {
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, [handleClickOutside]);
 
   return (
     <div
       ref={containerRef}
-      className={`searchContainer ${isExpanded ? 'expanded' : ''}`}
+      className={`searchContainer ${searchContainerExpanded ? 'expanded' : ''}`}
     >
       <button className="iconButton" onClick={handleSearchClick}>
-        {searchIcon && <img src={searchIcon} alt="Search" />}
+        <img src={searchIcon} alt="Search" loading="lazy" />
       </button>
       <div
         className="searchInputContainer"
-        style={{ display: isExpanded ? 'flex' : 'none' }}
+        style={{ display: searchContainerExpanded ? 'flex' : 'none' }}
       >
         <input
           ref={inputRef}
@@ -68,7 +69,7 @@ const Search = ({ searchIcon }) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(Search)
+export default React.memo(Search);

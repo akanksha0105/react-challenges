@@ -1,21 +1,8 @@
 import { baseURL, client } from "../axios/axios";
 export const missingImageString = 'images/placeholder_for_missing_posters.png';
-export const getImageUrl = async (imageString) => {
 
-  if (imageString === "posterthatismissing.jpg") {
-    return `${baseURL}/${missingImageString}`;
-  }
+export const getImageUrl = (imageString) => `${process.env.REACT_APP_API_URL}/images/${imageString}`;
 
-  try {
-    const response = await client.get(`images/${imageString}`);
-    const { baseURL, url } = response?.config;
-    const imageURL = `${baseURL}/${url}`;
-    return imageURL;
-  } catch (error) {
-    console.error("Error retrieving image", error);
-    return "";
-  }
-};
 
 export const placeholderImage = `${process.env.REACT_APP_API_URL}/images/placeholder_for_missing_posters.png`;
 

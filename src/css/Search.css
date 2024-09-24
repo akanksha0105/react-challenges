@@ -62,37 +62,3 @@
   outline: none;
   box-shadow: none;
 }
- 
-
-/* 
-@media (max-width: 768px) {
-  .searchContainer {
-    display: flex;
-    flex-direction: row;
-    border: var(--primary-color);
-  }
-
-  .iconButton {
-    width: 0.75em;
-    height: 0.75em;
-  }
-  .iconButton img {
-    width: 0.75em;
-    height: 0.75em;
-  }
-}
-
-@media (max-width: 480px) {
- 
-
-  .iconButton {
-    width: 0.75em;
-    height: 0.75em;
-  }
-  .iconButton img {
-    width: 0.75em;
-    height: 0.75em;
-  }
-
- 
-} */

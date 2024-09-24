@@ -1,4 +1,4 @@
-import { baseURL, client } from "../axios/axios";
+
 export const missingImageString = 'images/placeholder_for_missing_posters.png';
 
 export const getImageUrl = (imageString) => `${process.env.REACT_APP_API_URL}/images/${imageString}`;

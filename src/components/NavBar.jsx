@@ -10,6 +10,8 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { title } = useSelector((state) => state.contentListing);
   const [searchContainerExpanded, setSearchContainerExpanded] = useState(false);
+  // const [backIcon, setBackIcon] = useState(localStorage.getItem('backIcon') || null);
+  // const [searchIcon, setSearchIcon] = useState(localStorage.getItem('searchIcon') || null);
 
 
   const handleBackButtonClick = () => {
